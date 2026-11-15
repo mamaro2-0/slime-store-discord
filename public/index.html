@@ -74,6 +74,20 @@ form.addEventListener("submit", async event => {
     button.disabled = false;
   }
 });
+  const PAY_DETAILS = {
+  GCash: "0991 928 3021 (GE****K B.)",
+  Maya: "0991 928 3021 (GE****K B.)",
+  GoTyme: "0991 928 3021 (GE****K B.)",
+  PayPal: "genrickthepro@gmail.com"
+};
+const payInfo = document.getElementById("payInfo");
+document.getElementById("paymentMethod").addEventListener("change", e => {
+  const m = e.target.value;
+  if (!PAY_DETAILS[m]) { payInfo.style.display = "none"; return; }
+  const amount = m === "PayPal" ? "$7.99" : "₱380";
+  payInfo.textContent = `Ipadala ang ${amount} sa ${m}:\n${PAY_DETAILS[m]}\n\nPagkatapos magbayad, ilagay ang reference number at receipt sa ibaba.`;
+  payInfo.style.display = "block";
+});
 </script>
 </body>
 </html>
